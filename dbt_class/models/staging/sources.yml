@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: railway
+    description: "This is customer table it contains information about the customer like name, adrress, phone number etc"
+    schema: public
+    tables:
+      - name: customer

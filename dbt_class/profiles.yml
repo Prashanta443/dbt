@@ -1,0 +1,12 @@
+dbt_class:
+  outputs:
+    dev:
+      dbname: railway
+      host: zephyr.proxy.rlwy.net
+      pass: McBunxBtqRoyovJxEbKxwDJfYjsbhend
+      port: 44499
+      schema: defalut_schema
+      threads: 1
+      type: postgres
+      user: postgres
+  target: dev
