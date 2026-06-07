@@ -8,19 +8,9 @@ WITH src AS (
         *
     FROM
         {{ source(
-            'railway',
+            'localsource',
             'customer'
         ) }}
-
-{% if is_incremental() %}
-WHERE
-    modified_date > (
-        SELECT
-            MAX(modified_date)
-        FROM
-            {{ this }}
-    )
-{% endif %}
 )
 SELECT
     cust_id,
@@ -34,6 +24,8 @@ SELECT
     mother_name,
     occupation,
     education,
-    nationality
+    nationality,
+    created_date,
+    modified_date
 FROM
     src

@@ -1,8 +1,10 @@
 version: 2
 
 sources:
-  - name: railway
+  - name: localsource
     description: "This is customer table it contains information about the customer like name, adrress, phone number etc"
     schema: public
     tables:
       - name: customer
+      - name: account
+      - name: hist_transactional
