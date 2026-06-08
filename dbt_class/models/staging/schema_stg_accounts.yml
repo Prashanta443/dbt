@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_accounts
+    description: >
+      Account master table. One row per bank account. It holds account-level
+      information such as balance, currency, scheme/product the account belongs
+      to and which customer and branch it is linked to.
+    columns:
+      - name: account_id
+        description: "Primary Key. Unique identifier of the account."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Foreign Key to stg_customer.cust_id. The owner of the account."
+        tests:
+          - not_null
+
+      - name: branch_id
+        description: "Foreign Key to stg_branch.branch_id. Branch where the account is held."
+        tests:
+          - not_null
+
+      - name: account_balance
+        description: "Current available balance of the account."
+
+      - name: lien_amt
+        description: "Amount held/blocked (lien) and not available for withdrawal."
+
+      - name: acct_cls_flg
+        description: "Account close flag. Indicates whether the account is closed (Y) or active (N)."
+
+      - name: product_id
+        description: "Foreign Key to stg_product.product_id. The banking product of this account."
+        tests:
+          - not_null
+
+      - name: schm_type
+        description: "Scheme type of the account (e.g. loan, deposit, margin)."
+
+      - name: schm_code
+        description: "Scheme code identifying the specific scheme/product variant."
+
+      - name: acct_crncy_code
+        description: "Currency code of the account (e.g. NPR, USD)."
+
+      - name: acct_opn_date
+        description: "Date the account was opened."
+
+      - name: created_date
+        description: "Timestamp the record was first created in the source system."
+
+      - name: modified_date
+        description: "Timestamp the record was last modified. Used as the incremental key."

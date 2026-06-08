@@ -8,3 +8,6 @@ sources:
       - name: customer
       - name: account
       - name: hist_transactional
+      - name: branch
+      - name: card
+      - name: product

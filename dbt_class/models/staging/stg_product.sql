@@ -9,22 +9,14 @@ WITH src AS (
     FROM
         {{ source(
             'localsource',
-            'customer'
+            'product'
         ) }}
 )
 SELECT
-    cust_id,
-    NAME,
-    address,
-    phone_number,
-    postal_code,
-    country,
-    email,
-    father_name,
-    mother_name,
-    occupation,
-    education,
-    nationality,
+    product_id,
+    schm_type,
+    schm_code,
+    product_desc,
     created_date,
     modified_date
 FROM

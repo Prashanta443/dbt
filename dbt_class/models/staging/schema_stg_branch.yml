@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_branch
+    description: >
+      Branch table. One row per bank branch. It contains the branches of the
+      bank along with their location details such as province, cluster and city.
+    columns:
+      - name: branch_id
+        description: "Primary Key. Unique identifier of the branch."
+        tests:
+          - unique
+          - not_null
+
+      - name: province
+        description: "Province in which the branch is located."
+
+      - name: cluster_name
+        description: "Cluster/region grouping the branch belongs to."
+
+      - name: city_name
+        description: "City in which the branch is located."
+
+      - name: branch_name
+        description: "Name of the branch."
+        tests:
+          - not_null
+
+      - name: created_date
+        description: "Timestamp the record was first created in the source system."
+
+      - name: modified_date
+        description: "Timestamp the record was last modified."

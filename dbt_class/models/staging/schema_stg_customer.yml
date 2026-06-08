@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_customer
+
+    description: >
+      Customer master table. One Row per customer 
+      contain full informatin . and almost 80% of customer are Neplaea
+    columns:
+      - name: cust_id
+        description: "Primary Key. Unique customer_id format C0001 to ..."
+        tests:
+          - unique
+          - not_null

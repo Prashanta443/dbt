@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_hist_transactional
+    description: >
+      Historical transaction table. One row per transaction. It holds the
+      transactional data of the bank, such as how much amount was used in a
+      transaction, the currency, the type/particular of the transaction and any
+      remarks.
+    columns:
+      - name: tran_id
+        description: "Primary Key. Unique identifier of the transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign Key to stg_accounts.account_id. Account the transaction belongs to."
+        tests:
+          - not_null
+
+      - name: tran_amount
+        description: "Amount of money involved in the transaction."
+
+      - name: tran_date
+        description: "Date the transaction took place."
+
+      - name: tran_crncy
+        description: "Currency code of the transaction (e.g. NPR, USD)."
+
+      - name: branch_id
+        description: "Foreign Key to stg_branch.branch_id. Branch where the transaction happened."
+
+      - name: tran_particular
+        description: "Type / particular of the transaction (e.g. deposit, withdrawal, transfer)."
+
+      - name: tran_remarks
+        description: "Free text remarks describing the transaction."
+
+      - name: created_date
+        description: "Timestamp the record was first created in the source system."
+
+      - name: modified_date
+        description: "Timestamp the record was last modified. Used as the incremental key."

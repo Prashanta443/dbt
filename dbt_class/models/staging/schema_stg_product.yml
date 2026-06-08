@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: stg_product
+    description: >
+      Bank product table. One row per product. It describes what kind of
+      account/scheme a product is, such as loan, deposit, margin deposit etc.,
+      along with its scheme type and code.
+    columns:
+      - name: product_id
+        description: "Primary Key. Unique identifier of the banking product."
+        tests:
+          - unique
+          - not_null
+
+      - name: schm_type
+        description: "Scheme type of the product (e.g. loan, deposit, margin deposit)."
+        tests:
+          - not_null
+
+      - name: schm_code
+        description: "Scheme code identifying the specific scheme/product variant."
+
+      - name: product_desc
+        description: "Human readable description of the product."
+
+      - name: created_date
+        description: "Timestamp the record was first created in the source system."
+
+      - name: modified_date
+        description: "Timestamp the record was last modified."

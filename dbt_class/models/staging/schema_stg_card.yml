@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_card
+    description: >
+      Card table. One row per card. It contains information about the cards
+      issued against an account, such as the card type (debit / credit),
+      balances and expiry.
+    columns:
+      - name: card_number
+        description: "Primary Key. Unique card number."
+        tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        description: "Foreign Key to stg_accounts.account_id. Account the card is linked to."
+        tests:
+          - not_null
+
+      - name: balance
+        description: "Current balance available on the card."
+
+      - name: card_type
+        description: "Type of card, e.g. debit or credit."
+        tests:
+          - not_null
+
+      - name: closing_balance
+        description: "Closing balance of the card for the period."
+
+      - name: card_expiry_date
+        description: "Expiry date of the card."
+
+      - name: created_date
+        description: "Timestamp the record was first created in the source system."
+
+      - name: modified_date
+        description: "Timestamp the record was last modified."

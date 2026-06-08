@@ -9,22 +9,16 @@ WITH src AS (
     FROM
         {{ source(
             'localsource',
-            'customer'
+            'card'
         ) }}
 )
 SELECT
-    cust_id,
-    NAME,
-    address,
-    phone_number,
-    postal_code,
-    country,
-    email,
-    father_name,
-    mother_name,
-    occupation,
-    education,
-    nationality,
+    card_number,
+    account_id,
+    balance,
+    card_type,
+    closing_balance,
+    card_expiry_date,
     created_date,
     modified_date
 FROM
