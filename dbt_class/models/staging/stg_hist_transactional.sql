@@ -1,7 +1,7 @@
 {{ config(
     materialized = 'incremental',
     incremental_strategy = 'append',
-    unique_key ='account_id',
+    unique_key ='account_id'
 ) }}
 
 
@@ -9,12 +9,13 @@ with src as (
     select * from {{source('localsource','hist_transactional')}}
     {% if is_incremental() %}
 
-where modified_date >= (select coalesce(max(modified_date),'1900-01-01') from {{ this }} )
+where modified_date > (select coalesce(max(modified_date),'1900-01-01') from {{ this }} )
 
 {% endif %}
 )
 
 SELECT  
+    {{ dbt_utils.generate_surrogate_key(['tran_id','modified_date']) }} as tran_sk,
     tran_id,
     account_id,
     tran_amount,

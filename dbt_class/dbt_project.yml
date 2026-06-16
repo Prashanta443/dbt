@@ -38,10 +38,10 @@ models:
       +materialized: table
       +schema: silver
 
-    seeds:
-      +materialized: table
-      +schema: seeds_schame
+seeds:
+  dbt_class:
+    +schema: silver_seed
 
-    snapshot:
-      +materialized: table
-      +schema: gold
+snapshots:
+  dbt_class:
+    +schema: gold

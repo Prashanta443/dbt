@@ -1,7 +1,8 @@
 {{ config(
     materialized = 'incremental',
     incremental_strategy = 'merge',
-    unique_key ='account_id',
+    unique_key ='account_id'
+    
 ) }}
 
 WITH src AS (
@@ -12,7 +13,7 @@ WITH src AS (
         
 {% if is_incremental() %}
 
-where modified_date >= (select coalesce(max(modified_date),'1900-01-01') from {{ this }} )
+where modified_date > (select coalesce(max(modified_date),'1900-01-01') from {{ this }} )
 
 {% endif %}
 )
